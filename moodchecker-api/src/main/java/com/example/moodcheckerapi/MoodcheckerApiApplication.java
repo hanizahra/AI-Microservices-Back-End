@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MoodcheckerApiApplication {
 
-	@RequestMapping("/")
-	public String home() {
-		return "some moods";
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(MoodcheckerApiApplication.class, args);
 	}
