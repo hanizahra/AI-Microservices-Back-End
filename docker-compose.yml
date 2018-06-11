@@ -34,10 +34,25 @@ services:
       - ./moodchecker-api:/app
     depends_on:
       - eureka
+      - postgresdev
     command: './gradlew bootRun'
     environment:
       - GRADLE_USER_HOME=cache
       - SPRING_PROFILES_ACTIVE=dev
+  colorizer-api:
+      image: anapsix/alpine-java:8_jdk_unlimited
+      ports:
+        - '8082:8082'
+      working_dir: /app
+      volumes:
+        - ./colorizer-api:/app
+      depends_on:
+        - eureka
+        - postgresdev
+      command: './gradlew bootRun'
+      environment:
+        - GRADLE_USER_HOME=cache
+        - SPRING_PROFILES_ACTIVE=dev
   postgresdev:
       image: postgres
       ports:
