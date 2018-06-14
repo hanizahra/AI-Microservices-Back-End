@@ -18,32 +18,27 @@ public class MoodsController {
     @Autowired
     private MoodsRepository moodsRepository;
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/moods")
     public Iterable<Mood> findAllMoods() {
         return moodsRepository.findAll();
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/moods/{moodId}")
     public Mood findMoodById(@PathVariable Long moodId) {
         return moodsRepository.findOne(moodId);
     }
 
-    @CrossOrigin(origins = "*")
     @DeleteMapping("/moods/{moodId}")
     public HttpStatus deleteMoodById(@PathVariable Long moodId) {
         moodsRepository.delete(moodId);
         return HttpStatus.OK;
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/moods")
     public Mood createNewMood(@RequestBody Mood newMood) {
         return moodsRepository.save(newMood);
     }
 
-    @CrossOrigin(origins = "*")
     @PatchMapping("/moods/{moodId}")
     public Mood updateMoodById(@PathVariable Long moodId, @RequestBody Mood moodRequest) {
 
