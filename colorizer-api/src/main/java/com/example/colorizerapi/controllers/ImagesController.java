@@ -16,32 +16,27 @@ public class ImagesController {
     @Autowired
     private ImagesRepository imagesRepository;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/images")
     public Iterable<Image> findAllImages() {
         return imagesRepository.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/images/{imageId}")
     public Image findImageById(@PathVariable Long imageId) {
         return imagesRepository.findOne(imageId);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/images/{imageId}")
     public HttpStatus deleteImageById(@PathVariable Long imageId) {
         imagesRepository.delete(imageId);
         return HttpStatus.OK;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/images")
     public Image createNewImage(@RequestBody Image newImage) {
         return imagesRepository.save(newImage);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PatchMapping("/images/{imageId}")
     public Image updateImageById(@PathVariable Long imageId, @RequestBody Image imageRequest) {
 
